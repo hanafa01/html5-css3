@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HRML5 and CSS3</title>
+
+  <style type="text/css">
+    #myCanvas{
+      border: 1px solid grey;
+    }
+  </style>
 </head>
 <body>
 <h2>HTML5 Form Features:</h2>
@@ -39,6 +45,8 @@
   </div>
 <!-- End For Video -->
 
+<hr/>
+
 <!-- For Audio -->
 <h2>Audio</h2>
 <div>
@@ -49,6 +57,14 @@
   <button id="playpauseaudio">Pause audio</button>
 </div>
 <!-- End For Audio -->
+
+<hr/>
+
+<h2>Canvas</h2>
+
+<canvas id="myCanvas" width="500" height="400">
+
+</canvas>
 
   <script type="text/javascript">
   //For Video
@@ -72,6 +88,41 @@
         this.innerHTML = "Play Audio";
       }
     };
+
+    var myCanvas = document.getElementById("myCanvas");
+          var context = myCanvas.getContext("2d");
+
+
+          var gradient = context.createLinearGradient(150, 100, 350, 300);
+
+          gradient.addColorStop(0, "white");
+          gradient.addColorStop(1, "#49C900")
+
+          context.fillStyle = gradient;
+          context.fillRect(150, 100, 200, 200);
+
+          context.moveTo(150, 100);
+          context.lineTo(350, 300);
+
+          context.moveTo(150, 300);
+          context.lineTo(350, 100);
+
+          context.strokeStyle = "#F42924";
+          context.stroke();
+
+          context.beginPath();
+          context.arc(100, 100, 50, Math.PI, 2*Math.PI * 3/4);
+          context.stroke();
+
+          var textGradient = context.createLinearGradient(200, 50, 300, 50);
+
+          textGradient.addColorStop(0, "red");
+          textGradient.addColorStop(1, "yellow");
+
+          context.fillStyle = textGradient;
+          context.font= "20px Arial";
+          context.fillText("My Canvas", 200, 50);
+
   </script>
 </body>
 </html>

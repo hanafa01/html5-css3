@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HRML5 and CSS3</title>
-
-  <style type="text/css">
-    #myCanvas{
-      border: 1px solid grey;
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h2>HTML5 Form Features:</h2>
-  <form>
-    <p>Placeholder: <input type="text" placeholder="Enter Name: " /></p>
-    <p>Autofocus: <input type="text" autofocus/></p>
-    <p>Autocomplete Off: <input type="text" autocomplete="off"/></p>
-    <p>Required: <input type="text" required/></p>
-    <p>Email: <input type="email"/></p>
-    <p>Pattern: <input type="text" pattern="[0-9]"/></p>
-      <datalist id="names">
-        <option value="Hana">Hana</option>
-        <option value="Ibrahim">Ibrahim</option>
-        <option value="Walid">Walid</option>
-        <option value="Hanane">Hanane</option>
-      </datalist>
-    <p>Autocomplete: <input type="text" list="names"/></p>
-    <p>Multiple file upload: <input type="file" multiple/></p>
-    <p><input type="submit" value="Submit"/></p>
-  </form>
 
-  <hr/>
+<div class="scrollmenu">
+  <a id="html5formMenu" style="cursor">HTML5 Form Features</a>
+  <a id="videoAudioMenu">Example of Video And Audio</a>
+  <a id="canvasMenu">Example of Canvas</a>
+  <a id="clockMenu">Example of Clock</a>
+</div>
 
-  <h2>Video</h2>
+<div id="html5form">
+  <h2>HTML5 Form Features:</h2>
+    <form>
+      <p>Placeholder: <input type="text" placeholder="Enter Name: " /></p>
+      <p>Autofocus: <input type="text" autofocus/></p>
+      <p>Autocomplete Off: <input type="text" autocomplete="off"/></p>
+      <p>Required: <input type="text" required/></p>
+      <p>Email: <input type="email"/></p>
+      <p>Pattern: <input type="text" pattern="[0-9]"/></p>
+        <datalist id="names">
+          <option value="Hana">Hana</option>
+          <option value="Ibrahim">Ibrahim</option>
+          <option value="Walid">Walid</option>
+          <option value="Hanane">Hanane</option>
+        </datalist>
+      <p>Autocomplete: <input type="text" list="names"/></p>
+      <p>Multiple file upload: <input type="file" multiple/></p>
+      <p><input type="submit" value="Submit"/></p>
+    </form>
+</div>
+
+<div id="videoAudio" style="display:none;">
+  <h2>Video: </h2>
 <!-- For Video -->
   <div>
     <video width="320" height="240" id="video" controls autoplay muted>
@@ -45,84 +47,184 @@
   </div>
 <!-- End For Video -->
 
-<hr/>
+  <hr/>
 
-<!-- For Audio -->
-<h2>Audio</h2>
-<div>
-  <audio controls id="audio">
-    <source src="sources/audio.mp3" type="audio/mpeg"/>
-    Please upgrade your browser.
-  </audio>
-  <button id="playpauseaudio">Pause audio</button>
+  <!-- For Audio -->
+  <h2>Audio: </h2>
+  <div>
+    <audio controls id="audio">
+      <source src="sources/audio.mp3" type="audio/mpeg"/>
+      Please upgrade your browser.
+    </audio>
+    <button id="playpauseaudio">Pause audio</button>
+  </div>
+  <!-- End For Audio -->
 </div>
-<!-- End For Audio -->
 
-<hr/>
+<div id="canvas" style="display:none;">
+  <h2>Example using Canvas:</h2>
+  <canvas id="myCanvas" width="500" height="400">
+    Please upgrade your browser.
+  </canvas>
+</div>
 
-<h2>Canvas</h2>
-
-<canvas id="myCanvas" width="500" height="400">
-
-</canvas>
-
-  <script type="text/javascript">
-  //For Video
-    document.getElementById("playpause").onclick = function(){
-      if(document.getElementById("video").paused){
-        document.getElementById("video").play();
-        this.innerHTML = "Pause Video";
-      }else{
-        document.getElementById("video").pause();
-        this.innerHTML = "Play Video";
-      }
-    };
-
-  //For Audio
-    document.getElementById("playpauseaudio").onclick = function(){
-      if(document.getElementById("audio").paused){
-        document.getElementById("audio").play();
-        this.innerHTML = "Pause Audio";
-      }else{
-        document.getElementById("audio").pause();
-        this.innerHTML = "Play Audio";
-      }
-    };
-
-    var myCanvas = document.getElementById("myCanvas");
-          var context = myCanvas.getContext("2d");
+<div id="clock" style="display:none;">
+  <h2>Clock: </h2>
+      <canvas id="myClock" width="500" height="500">
+        Please upgrade your browser.
+      </canvas>
+</div>
 
 
-          var gradient = context.createLinearGradient(150, 100, 350, 300);
+<script type="text/javascript">
 
-          gradient.addColorStop(0, "white");
-          gradient.addColorStop(1, "#49C900")
+//For Video
+  document.getElementById("playpause").onclick = function(){
+    if(document.getElementById("video").paused){
+      document.getElementById("video").play();
+      this.innerHTML = "Pause Video";
+    }else{
+      document.getElementById("video").pause();
+      this.innerHTML = "Play Video";
+    }
+  };
 
-          context.fillStyle = gradient;
-          context.fillRect(150, 100, 200, 200);
+//For Audio
+  document.getElementById("playpauseaudio").onclick = function(){
+    if(document.getElementById("audio").paused){
+      document.getElementById("audio").play();
+      this.innerHTML = "Pause Audio";
+    }else{
+      document.getElementById("audio").pause();
+      this.innerHTML = "Play Audio";
+    }
+  };
 
-          context.moveTo(150, 100);
-          context.lineTo(350, 300);
+  var myCanvas = document.getElementById("myCanvas");
+  var context = myCanvas.getContext("2d");
 
-          context.moveTo(150, 300);
-          context.lineTo(350, 100);
 
-          context.strokeStyle = "#F42924";
-          context.stroke();
+  var gradient = context.createLinearGradient(150, 100, 350, 300);
+
+  gradient.addColorStop(0, "white");
+  gradient.addColorStop(1, "#49C900")
+
+  context.fillStyle = gradient;
+  context.fillRect(150, 100, 200, 200);
+
+  context.moveTo(150, 100);
+  context.lineTo(350, 300);
+
+  context.moveTo(150, 300);
+  context.lineTo(350, 100);
+
+  context.strokeStyle = "#F42924";
+  context.stroke();
+
+  context.beginPath();
+  context.arc(100, 100, 50, Math.PI, 2*Math.PI * 3/4);
+  context.stroke();
+
+  var textGradient = context.createLinearGradient(200, 50, 300, 50);
+
+  textGradient.addColorStop(0, "red");
+  textGradient.addColorStop(1, "yellow");
+
+  context.fillStyle = textGradient;
+  context.font= "20px Arial";
+  context.fillText("My Canvas", 200, 50);
+
+
+
+//CLOCK
+  function setTime() {
+
+        var canvas = document.getElementById("myClock");
+        var context = canvas.getContext("2d");
+        var clockRadius = canvas.width/2;
+
+        context.beginPath();
+
+          context.fillStyle = "black";
+          context.arc(clockRadius, clockRadius, clockRadius, 0, 2*Math.PI);
+          context.fill();
+
+          context.fillStyle = "white";
 
           context.beginPath();
-          context.arc(100, 100, 50, Math.PI, 2*Math.PI * 3/4);
+          context.arc(clockRadius, clockRadius, 10, 0, 2*Math.PI);
+          context.fill();
+
+          context.font = clockRadius / 10 + "px arial";
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+
+          for (var i = 1; i <= 12; i++) {
+
+              context.fillText(i, clockRadius + clockRadius * 0.9 * Math.sin(i * 2*Math.PI / 12), clockRadius - (clockRadius * 0.9 * Math.cos(i * 2 * Math.PI / 12)));
+
+          }
+
+
+          var hours = new Date().getHours();
+          var minutes = new Date().getMinutes();
+          var seconds = new Date().getSeconds();
+
+          var fullHours = hours % 12 + minutes / 60 + seconds / 3600;
+
+          var hoursAngle = fullHours * 2 * Math.PI / 12;
+          var minutesAngle = minutes * 2 * Math.PI / 60;
+          var secondsAngle = seconds * 2 * Math.PI / 60;
+
+          context.strokeStyle = "white";
+          context.moveTo(clockRadius, clockRadius);
+          context.lineTo(clockRadius + clockRadius * 0.6 * Math.sin(hoursAngle), clockRadius - (clockRadius * 0.6 * Math.cos(hoursAngle)));
+          context.lineWidth = 5;
           context.stroke();
 
-          var textGradient = context.createLinearGradient(200, 50, 300, 50);
+          context.moveTo(clockRadius, clockRadius);
+          context.lineTo(clockRadius + clockRadius * 0.8 * Math.sin(minutesAngle), clockRadius - (clockRadius * 0.8 * Math.cos(minutesAngle)));
+          context.lineWidth = 3;
+          context.stroke();
 
-          textGradient.addColorStop(0, "red");
-          textGradient.addColorStop(1, "yellow");
+          context.moveTo(clockRadius, clockRadius);
+          context.lineTo(clockRadius + clockRadius * 0.9 * Math.sin(secondsAngle), clockRadius - (clockRadius * 0.9 * Math.cos(secondsAngle)));
+          context.lineWidth = 2;
+          context.stroke();
 
-          context.fillStyle = textGradient;
-          context.font= "20px Arial";
-          context.fillText("My Canvas", 200, 50);
+          }
 
-  </script>
+          setInterval(setTime, 1000);
+
+//END CLOCK
+
+  $("#html5formMenu").click(function(){
+    $("#html5form").show();
+    $("#videoAudio").hide();
+    $("#canvas").hide();
+    $("#clock").hide();
+  });
+
+  $("#videoAudioMenu").click(function(){
+    $("#html5form").hide();
+    $("#videoAudio").show();
+    $("#canvas").hide();
+    $("#clock").hide();
+  });
+
+  $("#canvasMenu").click(function(){
+    $("#html5form").hide();
+    $("#videoAudio").hide();
+    $("#canvas").show();
+    $("#clock").hide();
+  });
+
+  $("#clockMenu").click(function(){
+    $("#html5form").hide();
+    $("#videoAudio").hide();
+    $("#canvas").hide();
+    $("#clock").show();
+  });
+</script>
 </body>
 </html>

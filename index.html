@@ -28,7 +28,50 @@
 
   <hr/>
 
+  <h2>Video</h2>
+<!-- For Video -->
+  <div>
+    <video width="320" height="240" id="video" controls autoplay muted>
+      <source src="sources/video.mp4" type="video/mp4"/>
+      Please upgrade your browser.
+    </video>
+    <button id="playpause">Pause Video</button>
+  </div>
+<!-- End For Video -->
 
+<!-- For Audio -->
+<h2>Audio</h2>
+<div>
+  <audio controls id="audio">
+    <source src="sources/audio.mp3" type="audio/mpeg"/>
+    Please upgrade your browser.
+  </audio>
+  <button id="playpauseaudio">Pause audio</button>
+</div>
+<!-- End For Audio -->
 
+  <script type="text/javascript">
+  //For Video
+    document.getElementById("playpause").onclick = function(){
+      if(document.getElementById("video").paused){
+        document.getElementById("video").play();
+        this.innerHTML = "Pause Video";
+      }else{
+        document.getElementById("video").pause();
+        this.innerHTML = "Play Video";
+      }
+    };
+
+  //For Audio
+    document.getElementById("playpauseaudio").onclick = function(){
+      if(document.getElementById("audio").paused){
+        document.getElementById("audio").play();
+        this.innerHTML = "Pause Audio";
+      }else{
+        document.getElementById("audio").pause();
+        this.innerHTML = "Play Audio";
+      }
+    };
+  </script>
 </body>
 </html>
